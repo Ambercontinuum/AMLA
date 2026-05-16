@@ -3,8 +3,7 @@ import { GoogleGenAI, FunctionDeclaration, Type, Tool } from "@google/genai";
 import { Attachment, Message } from "../types";
 import { analyze_context, ContextAnalysis } from "../utils/chandraAnalysis";
 
-// Initialize the GenAI client
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const API_KEY = process.env.GEMINI_API_KEY || process.env.API_KEY;
 
 const MODEL_NAME = 'gemini-3-pro-preview';
 
@@ -42,6 +41,11 @@ export const sendMessageToGemini = async (
   currentInput: string,
   currentAttachments: Attachment[]
 ): Promise<ServiceResponse> => {
+  if (!API_KEY) {
+    throw new Error("Missing GEMINI_API_KEY. Add it to .env.local before starting AMLA.");
+  }
+
+  const ai = new GoogleGenAI({ apiKey: API_KEY });
   
   let capturedAnalysis: ContextAnalysis | null = null;
 

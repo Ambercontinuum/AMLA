@@ -16,13 +16,13 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, code }) => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleRun = () => {
-    // Simulate running code
+  const handlePreview = () => {
+    // This is a UI preview only; AMLA does not execute arbitrary code in-browser.
     setIsRunning(true);
     setOutput(null);
     setTimeout(() => {
       setIsRunning(false);
-      setOutput(`> Execution completed successfully.\n> Output generated at ${new Date().toLocaleTimeString()}`);
+      setOutput(`> Preview complete.\n> Sandboxed code execution is not enabled in this prototype.\n> ${new Date().toLocaleTimeString()}`);
     }, 1200);
   };
 
@@ -32,14 +32,15 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, code }) => {
         <span className="text-xs font-mono text-gray-400 lowercase">{language || 'text'}</span>
         <div className="flex space-x-2">
           <button 
-            onClick={handleRun}
+            onClick={handlePreview}
             disabled={isRunning}
             className="flex items-center space-x-1 text-xs text-green-400 hover:text-green-300 transition-colors disabled:opacity-50"
+            title="Preview simulated output"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
               <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
             </svg>
-            <span>{isRunning ? 'Running...' : 'Run'}</span>
+            <span>{isRunning ? 'Previewing...' : 'Preview'}</span>
           </button>
           <button 
             onClick={handleCopy}
