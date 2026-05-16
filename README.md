@@ -1,10 +1,16 @@
 # AMLA
 
-Adaptive Multimodal Learning Agent
+Adaptive Multimodal Learning Architecture
 
-AMLA is a research prototype for context-aware technical tutoring. It combines a multimodal chat interface with a lightweight local context analyzer, then uses Gemini function calling to adjust response style before producing help.
+AMLA is a Google DeepMind/Kaggle learning-system entry and research prototype for adaptive learning telemetry. The visible assistant is the interface layer; the deeper artifact is a training simulator for observing PSI-field behavior, coherence mathematics, and adaptive response dynamics.
 
 Status: public working prototype. This repository is intended to show the architecture, interaction loop, and implementation direction; it is not presented as a finished production deployment.
+
+## Lineage
+
+AMLA is a precursor model in the SERAPH design family. Its learning-context telemetry and coherence-adaptation loop informed the later SERAPH architecture, where these dynamics become part of a broader continuity and agent-coordination system.
+
+In this repo, the chat assistant is the demonstration surface. The important research object is the adaptive field behavior underneath it: input context is analyzed, mapped into support/coherence states, and used to guide the response strategy before generation.
 
 ## What It Does
 
@@ -12,7 +18,7 @@ Status: public working prototype. This repository is intended to show the archit
 - Runs a local context analysis pass before the model response.
 - Routes the response style through support levels such as `HIGH_SUPPORT_NEEDED`, `GUIDANCE_REQUIRED`, `DEBUG_ASSISTANCE`, and `TECHNICAL_ACCELERATION`.
 - Renders Markdown, code blocks, and model-provided JSON visualizations.
-- Keeps the interface focused on learning context instead of generic chat.
+- Keeps the interface focused on learning context, PSI/coherence observation, and adaptive telemetry rather than generic chat.
 
 ## Architecture
 
@@ -22,7 +28,7 @@ AMLA has three main layers:
 - `utils/chandraAnalysis.ts`: local context analyzer used as the grounding tool.
 - `services/geminiService.ts`: Gemini request flow with tool-calling and response adaptation.
 
-The project is related to the broader CHANDRA/SERAPH design family, but this repo is scoped to the adaptive learning assistant interface.
+The project is related to the broader CHANDRA/SERAPH design family, with AMLA serving as an earlier learning and coherence-simulation layer for the SERAPH direction.
 
 ## Run Locally
 
